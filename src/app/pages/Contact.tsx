@@ -11,10 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../components/ui/select";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, CheckCircle } from "lucide-react";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { PropertyMap } from "../components/PropertyMap";
 import { OFFICE_LOCATION } from "../data/properties";
+
+const WEB3FORMS_KEY = "b4af2204-7d9e-4b63-a77d-0826fa3bc4c2";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
@@ -27,12 +29,55 @@ export function ContactPage() {
     property: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We'll be in touch soon.");
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New inquiry from ${formData.firstName} ${formData.lastName}`,
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company || "N/A",
+          inquiry_type: formData.inquiryType || "Not specified",
+          property_of_interest: formData.property || "Not specified",
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          inquiryType: "",
+          property: "",
+          message: "",
+        });
+      } else {
+        setError("Something went wrong. Please try again or contact us directly.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -61,120 +106,146 @@ export function ContactPage() {
                 <Card>
                   <CardContent className="p-4 md:p-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid md:grid-cols-2 gap-4">
+
+                    {submitted ? (
+                      <div className="text-center py-12">
+                        <CheckCircle className="h-16 w-16 text-teal-600 mx-auto mb-4" />
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+                        <p className="text-gray-600 mb-6">
+                          Thank you for your inquiry. We'll be in touch within 1 business day.
+                        </p>
+                        <Button
+                          onClick={() => setSubmitted(false)}
+                          className="bg-teal-600 hover:bg-teal-700"
+                        >
+                          Send Another Message
+                        </Button>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="firstName">First Name *</Label>
+                            <Input
+                              id="firstName"
+                              value={formData.firstName}
+                              onChange={(e) => handleChange("firstName", e.target.value)}
+                              required
+                              className="mt-1"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="lastName">Last Name *</Label>
+                            <Input
+                              id="lastName"
+                              value={formData.lastName}
+                              onChange={(e) => handleChange("lastName", e.target.value)}
+                              required
+                              className="mt-1"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="email">Email Address *</Label>
+                            <Input
+                              id="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={(e) => handleChange("email", e.target.value)}
+                              required
+                              className="mt-1"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="phone">Phone Number *</Label>
+                            <Input
+                              id="phone"
+                              type="tel"
+                              value={formData.phone}
+                              onChange={(e) => handleChange("phone", e.target.value)}
+                              required
+                              className="mt-1"
+                            />
+                          </div>
+                        </div>
+
                         <div>
-                          <Label htmlFor="firstName">First Name *</Label>
+                          <Label htmlFor="company">Company Name (Optional)</Label>
                           <Input
-                            id="firstName"
-                            value={formData.firstName}
-                            onChange={(e) => handleChange("firstName", e.target.value)}
-                            required
+                            id="company"
+                            value={formData.company}
+                            onChange={(e) => handleChange("company", e.target.value)}
                             className="mt-1"
                           />
                         </div>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="inquiryType">Inquiry Type *</Label>
+                            <Select
+                              value={formData.inquiryType}
+                              onValueChange={(value) => handleChange("inquiryType", value)}
+                            >
+                              <SelectTrigger className="mt-1">
+                                <SelectValue placeholder="Select inquiry type" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Leasing Inquiry">Leasing Inquiry</SelectItem>
+                                <SelectItem value="General Question">General Question</SelectItem>
+                                <SelectItem value="Maintenance Request">Maintenance Request</SelectItem>
+                                <SelectItem value="Property Management Services">Property Management Services</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div>
+                            <Label htmlFor="property">Property of Interest</Label>
+                            <Select
+                              value={formData.property}
+                              onValueChange={(value) => handleChange("property", value)}
+                            >
+                              <SelectTrigger className="mt-1">
+                                <SelectValue placeholder="Select property" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Oviedo Park Crossing">Oviedo Park Crossing</SelectItem>
+                                <SelectItem value="Town Center at Timber Springs">Town Center at Timber Springs</SelectItem>
+                                <SelectItem value="Westland Terrace Plaza">Westland Terrace Plaza</SelectItem>
+                                <SelectItem value="General / Not Property Specific">General / Not Property Specific</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+
                         <div>
-                          <Label htmlFor="lastName">Last Name *</Label>
-                          <Input
-                            id="lastName"
-                            value={formData.lastName}
-                            onChange={(e) => handleChange("lastName", e.target.value)}
+                          <Label htmlFor="message">Message *</Label>
+                          <Textarea
+                            id="message"
+                            value={formData.message}
+                            onChange={(e) => handleChange("message", e.target.value)}
                             required
+                            rows={6}
                             className="mt-1"
+                            placeholder="Tell us about your inquiry..."
                           />
                         </div>
-                      </div>
 
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="email">Email Address *</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => handleChange("email", e.target.value)}
-                            required
-                            className="mt-1"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="phone">Phone Number *</Label>
-                          <Input
-                            id="phone"
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => handleChange("phone", e.target.value)}
-                            required
-                            className="mt-1"
-                          />
-                        </div>
-                      </div>
+                        {error && (
+                          <p className="text-red-600 text-sm">{error}</p>
+                        )}
 
-                      <div>
-                        <Label htmlFor="company">Company Name (Optional)</Label>
-                        <Input
-                          id="company"
-                          value={formData.company}
-                          onChange={(e) => handleChange("company", e.target.value)}
-                          className="mt-1"
-                        />
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="inquiryType">Inquiry Type *</Label>
-                          <Select
-                            value={formData.inquiryType}
-                            onValueChange={(value) => handleChange("inquiryType", value)}
-                          >
-                            <SelectTrigger className="mt-1">
-                              <SelectValue placeholder="Select inquiry type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="leasing">Leasing Inquiry</SelectItem>
-                              <SelectItem value="general">General Question</SelectItem>
-                              <SelectItem value="maintenance">Maintenance Request</SelectItem>
-                              <SelectItem value="management">Property Management Services</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div>
-                          <Label htmlFor="property">Property of Interest</Label>
-                          <Select
-                            value={formData.property}
-                            onValueChange={(value) => handleChange("property", value)}
-                          >
-                            <SelectTrigger className="mt-1">
-                              <SelectValue placeholder="Select property" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="oviedo-park-crossing">Oviedo Park Crossing</SelectItem>
-                              <SelectItem value="timber-springs">Town Center at Timber Springs</SelectItem>
-                              <SelectItem value="westland-terrace">Westland Terrace Plaza</SelectItem>
-                              <SelectItem value="general">General / Not Property Specific</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="message">Message *</Label>
-                        <Textarea
-                          id="message"
-                          value={formData.message}
-                          onChange={(e) => handleChange("message", e.target.value)}
-                          required
-                          rows={6}
-                          className="mt-1"
-                          placeholder="Tell us about your inquiry..."
-                        />
-                      </div>
-
-                      <Button type="submit" size="lg" className="w-full bg-teal-600 hover:bg-teal-700">
-                        Send Message
-                      </Button>
-                    </form>
+                        <Button
+                          type="submit"
+                          size="lg"
+                          className="w-full bg-teal-600 hover:bg-teal-700"
+                          disabled={submitting}
+                        >
+                          {submitting ? "Sending..." : "Send Message"}
+                        </Button>
+                      </form>
+                    )}
                   </CardContent>
                 </Card>
               </div>
