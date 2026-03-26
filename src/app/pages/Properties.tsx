@@ -165,7 +165,7 @@ export function PropertiesPage() {
                 <Button asChild size="lg" className="bg-white text-teal-600 hover:bg-gray-100">
                   <Link to="/contact">Contact Leasing Team</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-teal-600">
+                <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600">
                   <a href="tel:4074350218">(407) 435-0218</a>
                 </Button>
               </div>
