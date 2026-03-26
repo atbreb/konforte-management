@@ -136,7 +136,7 @@ export function BlogPage() {
       {/* Post Grid */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {posts.map((post, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
@@ -181,7 +181,7 @@ export function BlogPage() {
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Subscribe to our newsletter for the latest market insights and property news
           </p>
-          <div className="max-w-md mx-auto flex gap-4">
+          <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
             <input
               type="email"
               placeholder="Enter your email"

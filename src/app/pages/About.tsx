@@ -217,7 +217,7 @@ export function AboutPage() {
                 </CardContent>
               </Card>
               <Card className="bg-blue-50 border-blue-200">
-                <CardContent className="p-8">
+                <CardContent className="p-4 md:p-8">
                   <Eye className="h-12 w-12 text-blue-900 mb-4" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
                   <p className="text-gray-700">

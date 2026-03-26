@@ -9,9 +9,12 @@ interface PageShellProps {
 export function PageShell({ children, preloadImages = [] }: PageShellProps) {
   const loaded = useImagePreload(preloadImages);
 
-  if (!loaded) {
-    return <div className="min-h-screen" />;
-  }
-
-  return <>{children}</>;
+  return (
+    <div
+      className="transition-opacity duration-300"
+      style={{ opacity: loaded ? 1 : 0.6 }}
+    >
+      {children}
+    </div>
+  );
 }
