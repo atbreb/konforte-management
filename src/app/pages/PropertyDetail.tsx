@@ -5,6 +5,10 @@ import { Card, CardContent } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { MapPin, FileDown, Users, DollarSign, Phone, Mail, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Building2 } from "lucide-react";
+import { ScrollReveal } from "../components/ScrollReveal";
+import { PageShell } from "../components/PageShell";
+import { PropertyMap } from "../components/PropertyMap";
+import { PROPERTY_LOCATIONS } from "../data/properties";
 
 const propertiesData: Record<string, any> = {
   "oviedo-park-crossing": {
@@ -267,167 +271,177 @@ export function PropertyDetailPage() {
     );
   }
 
+  const locationData = propertyId ? PROPERTY_LOCATIONS[propertyId as keyof typeof PROPERTY_LOCATIONS] : null;
+
   return (
-    <div>
-      {/* Property Hero */}
-      <section className="relative h-96 flex items-end">
-        <div className="absolute inset-0">
-          <img
-            src={property.heroImage}
-            alt={property.name}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 pb-8 text-white">
-          <h1 className="text-5xl font-bold mb-3">{property.name}</h1>
-          <div className="flex items-center text-lg">
-            <MapPin className="h-5 w-5 mr-2" />
-            <span>{property.address}</span>
+    <PageShell preloadImages={[property.heroImage]}>
+      <div>
+        {/* Property Hero */}
+        <section className="relative h-96 flex items-end">
+          <div className="absolute inset-0">
+            <img
+              src={property.heroImage}
+              alt={property.name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           </div>
-        </div>
-      </section>
-
-      {/* Property Description */}
-      <section className="py-12 border-b">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Property Overview</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">{property.description}</p>
-              <div className="flex gap-4">
-                <Button variant="outline" className="border-blue-900 text-blue-900">
-                  <FileDown className="h-4 w-4 mr-2" />
-                  Download Property Flyer
-                </Button>
-                <Button variant="outline" className="border-blue-900 text-blue-900">
-                  <FileDown className="h-4 w-4 mr-2" />
-                  Download Site Plan
-                </Button>
-              </div>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="font-semibold text-gray-900 mb-4">Quick Facts</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Property Type:</span>
-                  <span className="font-semibold">Retail Shopping Center</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Year Built:</span>
-                  <span className="font-semibold">{property.yearBuilt}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Parking Spaces:</span>
-                  <span className="font-semibold">{property.parkingSpaces}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Traffic Count:</span>
-                  <span className="font-semibold">{property.trafficCount}/day</span>
-                </div>
-              </div>
+          <div className="relative z-10 container mx-auto px-4 pb-8 text-white">
+            <h1 className="text-5xl font-bold mb-3">{property.name}</h1>
+            <div className="flex items-center text-lg">
+              <MapPin className="h-5 w-5 mr-2" />
+              <span>{property.address}</span>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Trade Area Stats */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Key Property Statistics
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-teal-600 mb-2">
-                  {property.totalSize}
+        {/* Property Description */}
+        <ScrollReveal>
+          <section className="py-12 border-b">
+            <div className="container mx-auto px-4">
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="md:col-span-2">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Property Overview</h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">{property.description}</p>
+                  <div className="flex gap-4">
+                    <Button variant="outline" className="border-blue-900 text-blue-900">
+                      <FileDown className="h-4 w-4 mr-2" />
+                      Download Property Flyer
+                    </Button>
+                    <Button variant="outline" className="border-blue-900 text-blue-900">
+                      <FileDown className="h-4 w-4 mr-2" />
+                      Download Site Plan
+                    </Button>
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600">Total Property Size (sq ft)</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-teal-600 mb-2">
-                  {property.availableSpace}
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="font-semibold text-gray-900 mb-4">Quick Facts</h3>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Property Type:</span>
+                      <span className="font-semibold">Retail Shopping Center</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Year Built:</span>
+                      <span className="font-semibold">{property.yearBuilt}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Parking Spaces:</span>
+                      <span className="font-semibold">{property.parkingSpaces}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Traffic Count:</span>
+                      <span className="font-semibold">{property.trafficCount}/day</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-sm text-gray-600">Available Space (sq ft)</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-teal-600 mb-2">
-                  {property.units}
-                </div>
-                <div className="text-sm text-gray-600">Total Units</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-teal-600 mb-2">
-                  {property.occupancyRate}%
-                </div>
-                <div className="text-sm text-gray-600">Occupancy Rate</div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <h3 className="text-xl font-bold text-gray-900 mt-12 mb-6 text-center">
-            Trade Area Demographics (10-Minute Drive)
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Users className="h-8 w-8 text-blue-900 mx-auto mb-3" />
-                <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {property.population}
-                </div>
-                <div className="text-sm text-gray-600">Population</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Users className="h-8 w-8 text-blue-900 mx-auto mb-3" />
-                <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {property.households}
-                </div>
-                <div className="text-sm text-gray-600">Households</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 text-center">
-                <DollarSign className="h-8 w-8 text-blue-900 mx-auto mb-3" />
-                <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {property.avgIncome}
-                </div>
-                <div className="text-sm text-gray-600">Avg Household Income</div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Photo Gallery */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Property Gallery</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {property.gallery.map((image: string, index: number) => (
-              <div key={index} className="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                <img
-                  src={image}
-                  alt={`${property.name} - Photo ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onClick={() => setSelectedImageIndex(index)}
-                />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+        </ScrollReveal>
 
-      {/* Available Spaces */}
-      <section className="py-12 bg-gray-50">
+        {/* Trade Area Stats */}
+        <ScrollReveal>
+          <section className="py-12 bg-gray-50">
+            <div className="container mx-auto px-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+                Key Property Statistics
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                      {property.totalSize}
+                    </div>
+                    <div className="text-sm text-gray-600">Total Property Size (sq ft)</div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                      {property.availableSpace}
+                    </div>
+                    <div className="text-sm text-gray-600">Available Space (sq ft)</div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                      {property.units}
+                    </div>
+                    <div className="text-sm text-gray-600">Total Units</div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                      {property.occupancyRate}%
+                    </div>
+                    <div className="text-sm text-gray-600">Occupancy Rate</div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <h3 className="text-xl font-bold text-gray-900 mt-12 mb-6 text-center">
+                Trade Area Demographics (10-Minute Drive)
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <Users className="h-8 w-8 text-blue-900 mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-gray-900 mb-1">
+                      {property.population}
+                    </div>
+                    <div className="text-sm text-gray-600">Population</div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <Users className="h-8 w-8 text-blue-900 mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-gray-900 mb-1">
+                      {property.households}
+                    </div>
+                    <div className="text-sm text-gray-600">Households</div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <DollarSign className="h-8 w-8 text-blue-900 mx-auto mb-3" />
+                    <div className="text-2xl font-bold text-gray-900 mb-1">
+                      {property.avgIncome}
+                    </div>
+                    <div className="text-sm text-gray-600">Avg Household Income</div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {/* Photo Gallery */}
+        <ScrollReveal>
+          <section className="py-12">
+            <div className="container mx-auto px-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Property Gallery</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {property.gallery.map((image: string, index: number) => (
+                  <div key={index} className="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+                    <img
+                      src={image}
+                      alt={`${property.name} - Photo ${index + 1}`}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      onClick={() => setSelectedImageIndex(index)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {/* Available Spaces */}
+        <ScrollReveal>
+          <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Available Spaces</h2>
           <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -478,41 +492,55 @@ export function PropertyDetailPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Current Tenants */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Current Tenants</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {property.tenants.map((tenant: string, index: number) => (
-              <Card key={index}>
-                <CardContent className="p-4 text-center">
-                  <p className="text-sm font-semibold text-gray-900">{tenant}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Map */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Location</h2>
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="aspect-video bg-gray-200 flex items-center justify-center">
-              <div className="text-center text-gray-600">
-                <MapPin className="h-12 w-12 mx-auto mb-4" />
-                <p className="text-lg font-semibold">{property.address}</p>
-                <p className="text-sm">{property.city}, Florida</p>
-              </div>
+      <ScrollReveal>
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Current Tenants</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {property.tenants.map((tenant: string, index: number) => (
+                <Card key={index}>
+                  <CardContent className="p-4 text-center">
+                    <p className="text-sm font-semibold text-gray-900">{tenant}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
+
+      {/* Map */}
+      <ScrollReveal>
+        <section className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Location</h2>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              {locationData ? (
+                <PropertyMap
+                  locations={[locationData]}
+                  className="aspect-video"
+                  zoom={15}
+                />
+              ) : (
+                <div className="aspect-video bg-gray-200 flex items-center justify-center">
+                  <div className="text-center text-gray-600">
+                    <MapPin className="h-12 w-12 mx-auto mb-4" />
+                    <p className="text-lg font-semibold">{property.address}</p>
+                    <p className="text-sm">{property.city}, Florida</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* Contact Section */}
-      <section className="py-12">
+      <ScrollReveal>
+        <section className="py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Contact Our Leasing Team
@@ -558,6 +586,7 @@ export function PropertyDetailPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Image Modal */}
       {selectedImageIndex !== null && (
@@ -617,5 +646,6 @@ export function PropertyDetailPage() {
         </div>
       )}
     </div>
+    </PageShell>
   );
 }

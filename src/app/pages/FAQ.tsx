@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion";
+import { ScrollReveal } from "../components/ScrollReveal";
 
 export function FAQPage() {
   const faqCategories = [
@@ -112,7 +113,8 @@ export function FAQPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-12">
             {faqCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex}>
+              <ScrollReveal key={categoryIndex} delay={categoryIndex * 0.1}>
+              <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">{category.category}</h2>
                 <Accordion type="single" collapsible className="space-y-4">
                   {category.questions.map((item, index) => (
@@ -127,12 +129,14 @@ export function FAQPage() {
                   ))}
                 </Accordion>
               </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Still Have Questions CTA */}
+      <ScrollReveal>
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -146,6 +150,7 @@ export function FAQPage() {
           </Button>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

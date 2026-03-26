@@ -2,6 +2,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { Target, Eye, Award, Building2, Users, MapPin } from "lucide-react";
 import { AnimatedCounter } from "../components/AnimatedCounter";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ScrollReveal } from "../components/ScrollReveal";
 
 export function AboutPage() {
   const values = [
@@ -62,6 +63,7 @@ export function AboutPage() {
       </section>
 
       {/* Company Story */}
+      <ScrollReveal>
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -92,8 +94,10 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Mission & Values */}
+      <ScrollReveal>
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -106,7 +110,8 @@ export function AboutPage() {
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <Card key={index} className="text-center">
+                <ScrollReveal key={index} delay={index * 0.1}>
+                <Card className="text-center">
                   <CardContent className="p-8">
                     <div className="inline-flex items-center justify-center w-20 h-20 bg-teal-100 rounded-full mb-6">
                       <Icon className="h-10 w-10 text-teal-600" />
@@ -115,11 +120,13 @@ export function AboutPage() {
                     <p className="text-gray-600">{value.description}</p>
                   </CardContent>
                 </Card>
+                </ScrollReveal>
               );
             })}
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Team Members */}
       <section className="py-16">
@@ -132,7 +139,8 @@ export function AboutPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+              <ScrollReveal key={index} delay={index * 0.1}>
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="grid md:grid-cols-5 gap-0">
                   <div className="md:col-span-2">
                     <div className="relative h-64 md:h-full">
@@ -152,12 +160,14 @@ export function AboutPage() {
                   </div>
                 </div>
               </Card>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Stats / By the Numbers */}
+      <ScrollReveal>
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">By the Numbers</h2>
@@ -189,8 +199,10 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Mission Statement */}
+      <ScrollReveal>
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -217,6 +229,7 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

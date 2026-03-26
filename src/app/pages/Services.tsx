@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { Building2, Users, FileText, Wrench, DollarSign, TrendingUp, CheckCircle2 } from "lucide-react";
+import { ScrollReveal } from "../components/ScrollReveal";
 
 export function ServicesPage() {
   const services = [
@@ -121,7 +122,8 @@ export function ServicesPage() {
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <ScrollReveal key={index} delay={index * 0.1}>
+                <Card className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4 mb-6">
                       <div className="flex-shrink-0">
@@ -144,6 +146,7 @@ export function ServicesPage() {
                     </ul>
                   </CardContent>
                 </Card>
+              </ScrollReveal>
               );
             })}
           </div>
@@ -151,6 +154,7 @@ export function ServicesPage() {
       </section>
 
       {/* Process Overview */}
+      <ScrollReveal>
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -182,8 +186,10 @@ export function ServicesPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* CTA */}
+      <ScrollReveal>
       <section className="bg-teal-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Discuss Your Property?</h2>
@@ -195,6 +201,7 @@ export function ServicesPage() {
           </Button>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }

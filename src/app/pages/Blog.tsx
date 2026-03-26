@@ -4,6 +4,7 @@ import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Calendar, ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { ScrollReveal } from "../components/ScrollReveal";
 
 export function BlogPage() {
   const featuredPost = {
@@ -99,6 +100,7 @@ export function BlogPage() {
       </section>
 
       {/* Featured Post */}
+      <ScrollReveal>
       <section className="py-12">
         <div className="container mx-auto px-4">
           <Card className="overflow-hidden hover:shadow-xl transition-shadow">
@@ -129,13 +131,15 @@ export function BlogPage() {
           </Card>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Post Grid */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
+              <ScrollReveal key={index} delay={index * 0.1}>
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
                 <div className="relative h-48">
                   <ImageWithFallback
                     src={post.image}
@@ -156,6 +160,7 @@ export function BlogPage() {
                   </Button>
                 </CardContent>
               </Card>
+              </ScrollReveal>
             ))}
           </div>
 
@@ -169,6 +174,7 @@ export function BlogPage() {
       </section>
 
       {/* Newsletter CTA */}
+      <ScrollReveal>
       <section className="bg-teal-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
@@ -187,6 +193,7 @@ export function BlogPage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
     </div>
   );
 }
