@@ -41,7 +41,10 @@ export function ContactPage() {
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
           subject: `New inquiry from ${formData.firstName} ${formData.lastName}`,
@@ -71,7 +74,7 @@ export function ContactPage() {
           message: "",
         });
       } else {
-        setError("Something went wrong. Please try again or contact us directly.");
+        setError(result.message || "Something went wrong. Please try again or contact us directly.");
       }
     } catch {
       setError("Something went wrong. Please try again or contact us directly.");
