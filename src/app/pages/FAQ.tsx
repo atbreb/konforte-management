@@ -99,9 +99,9 @@ export function FAQPage() {
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="bg-blue-900 text-white py-10 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
           <p className="text-xl max-w-2xl mx-auto">
             Answers to common questions from prospective and current tenants
           </p>

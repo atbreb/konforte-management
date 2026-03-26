@@ -90,10 +90,10 @@ export function ContactPage() {
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="bg-blue-900 text-white py-10 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl max-w-2xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Contact Us</h1>
+          <p className="text-base md:text-xl max-w-2xl mx-auto">
             Get in touch about leasing opportunities or property management services
           </p>
         </div>

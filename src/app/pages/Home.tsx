@@ -67,7 +67,7 @@ export function HomePage() {
     <PageShell preloadImages={["/properties/westland-terrace/westland-3.jpg"]}>
       <div>
         {/* Hero Section */}
-        <section className="relative h-[400px] md:h-[600px] flex items-center justify-center text-white">
+        <section className="relative min-h-[420px] md:min-h-[600px] flex items-center justify-center text-white py-16">
           <div className="absolute inset-0 bg-gray-900">
             <img
               src="/properties/westland-terrace/westland-3.jpg"
@@ -79,7 +79,7 @@ export function HomePage() {
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
               Professional Retail Property Management<br />in Central Florida
             </h1>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl mb-8 max-w-2xl mx-auto">
               Owner-operated expertise delivering exceptional results for retail shopping centers
             </p>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">

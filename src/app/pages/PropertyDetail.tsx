@@ -277,7 +277,7 @@ export function PropertyDetailPage() {
     <PageShell preloadImages={[property.heroImage]}>
       <div>
         {/* Property Hero */}
-        <section className="relative h-48 md:h-96 flex items-end">
+        <section className="relative h-64 md:h-96 flex items-end">
           <div className="absolute inset-0">
             <img
               src={property.heroImage}
@@ -286,9 +286,9 @@ export function PropertyDetailPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           </div>
-          <div className="relative z-10 container mx-auto px-4 pb-8 text-white">
-            <h1 className="text-3xl md:text-5xl font-bold mb-3">{property.name}</h1>
-            <div className="flex items-center text-lg">
+          <div className="relative z-10 container mx-auto px-4 pb-6 md:pb-8 text-white">
+            <h1 className="text-2xl md:text-5xl font-bold mb-2 md:mb-3">{property.name}</h1>
+            <div className="flex items-center text-sm md:text-lg">
               <MapPin className="h-5 w-5 mr-2" />
               <span>{property.address}</span>
             </div>

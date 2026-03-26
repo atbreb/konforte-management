@@ -106,9 +106,9 @@ export function ServicesPage() {
   return (
     <div>
       {/* Page Header */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="bg-blue-900 text-white py-10 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Our Services</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h1>
           <p className="text-xl max-w-2xl mx-auto">
             Comprehensive property management solutions tailored for Central Florida retail centers
           </p>
