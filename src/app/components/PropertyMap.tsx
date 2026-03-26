@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useRef } from "react";
 import L from "leaflet";
 
 // Fix Leaflet default marker icons not loading in bundled apps
@@ -12,6 +13,29 @@ L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
+
+function InvalidateSizeOnVisible() {
+  const map = useMap();
+  const containerRef = useRef(map.getContainer());
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          map.invalidateSize();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [map]);
+
+  return null;
+}
 
 interface Location {
   lat: number;
@@ -43,6 +67,7 @@ export function PropertyMap({ locations, className, zoom, center }: PropertyMapP
         scrollWheelZoom={false}
         style={{ height: "100%", width: "100%" }}
       >
+        <InvalidateSizeOnVisible />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
