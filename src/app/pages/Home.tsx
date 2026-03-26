@@ -67,7 +67,7 @@ export function HomePage() {
     <PageShell preloadImages={["/properties/westland-terrace/westland-3.jpg"]}>
       <div>
         {/* Hero Section */}
-        <section className="relative h-[600px] flex items-center justify-center text-white">
+        <section className="relative h-[400px] md:h-[600px] flex items-center justify-center text-white">
           <div className="absolute inset-0 bg-gray-900">
             <img
               src="/properties/westland-terrace/westland-3.jpg"
@@ -76,13 +76,13 @@ export function HomePage() {
             />
           </div>
           <div className="relative z-10 container mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
               Professional Retail Property Management<br />in Central Florida
             </h1>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
               Owner-operated expertise delivering exceptional results for retail shopping centers
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
               <Button asChild size="lg" className="bg-teal-600 hover:bg-teal-700 text-lg px-8">
                 <Link to="/properties">View Our Properties</Link>
               </Button>
@@ -193,7 +193,7 @@ export function HomePage() {
                     <Link to="/about">Learn More About Us</Link>
                   </Button>
                 </div>
-                <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
+                <div className="relative h-48 md:h-96 rounded-lg overflow-hidden shadow-xl">
                   <img
                     src="/properties/oviedo-park-crossing/park-crossing-2.jpg"
                     alt="Property management team"

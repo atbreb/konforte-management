@@ -104,7 +104,7 @@ export function BlogPage() {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <Card className="overflow-hidden hover:shadow-xl transition-shadow">
-            <div className="grid md:grid-cols-2 gap-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
               <div className="relative h-64 md:h-auto">
                 <ImageWithFallback
                   src={featuredPost.image}
@@ -115,7 +115,7 @@ export function BlogPage() {
                   <Badge className="bg-teal-600 hover:bg-teal-700">Featured</Badge>
                 </div>
               </div>
-              <CardContent className="p-8 flex flex-col justify-center">
+              <CardContent className="p-4 md:p-8 flex flex-col justify-center">
                 <Badge variant="outline" className="w-fit mb-3">{featuredPost.category}</Badge>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">{featuredPost.title}</h2>
                 <div className="flex items-center text-sm text-gray-600 mb-4">

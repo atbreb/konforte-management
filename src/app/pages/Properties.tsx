@@ -68,8 +68,8 @@ export function PropertiesPage() {
               {properties.map((property, index) => (
                 <ScrollReveal key={property.id} delay={index * 0.1}>
                   <Card className="overflow-hidden hover:shadow-xl transition-shadow">
-                    <div className="grid md:grid-cols-5 gap-0">
-                      <div className="md:col-span-2 relative h-64 md:h-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+                      <div className="md:col-span-2 relative h-48 md:h-auto">
                         <img
                           src={property.image}
                           alt={property.name}
@@ -84,7 +84,7 @@ export function PropertiesPage() {
                         )}
                       </div>
                       <div className="md:col-span-3">
-                        <CardContent className="p-8">
+                        <CardContent className="p-4 md:p-8">
                           <div className="flex items-start justify-between mb-4">
                             <div>
                               <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -102,7 +102,7 @@ export function PropertiesPage() {
 
                           <p className="text-gray-700 mb-6">{property.description}</p>
 
-                          <div className="grid grid-cols-3 gap-4 mb-6">
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 mb-6">
                             <div className="border-l-4 border-teal-600 pl-4">
                               <div className="text-sm text-gray-600 mb-1">Total Size</div>
                               <div className="text-lg font-bold text-gray-900">

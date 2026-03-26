@@ -277,7 +277,7 @@ export function PropertyDetailPage() {
     <PageShell preloadImages={[property.heroImage]}>
       <div>
         {/* Property Hero */}
-        <section className="relative h-96 flex items-end">
+        <section className="relative h-48 md:h-96 flex items-end">
           <div className="absolute inset-0">
             <img
               src={property.heroImage}
@@ -287,7 +287,7 @@ export function PropertyDetailPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           </div>
           <div className="relative z-10 container mx-auto px-4 pb-8 text-white">
-            <h1 className="text-5xl font-bold mb-3">{property.name}</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-3">{property.name}</h1>
             <div className="flex items-center text-lg">
               <MapPin className="h-5 w-5 mr-2" />
               <span>{property.address}</span>
@@ -299,11 +299,11 @@ export function PropertyDetailPage() {
         <ScrollReveal>
           <section className="py-12 border-b">
             <div className="container mx-auto px-4">
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
                 <div className="md:col-span-2">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Property Overview</h2>
                   <p className="text-gray-700 mb-6 leading-relaxed">{property.description}</p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                     <Button variant="outline" className="border-blue-900 text-blue-900">
                       <FileDown className="h-4 w-4 mr-2" />
                       Download Property Flyer
@@ -347,10 +347,10 @@ export function PropertyDetailPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
                 Key Property Statistics
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                    <div className="text-2xl md:text-3xl font-bold text-teal-600 mb-2">
                       {property.totalSize}
                     </div>
                     <div className="text-sm text-gray-600">Total Property Size (sq ft)</div>
@@ -358,7 +358,7 @@ export function PropertyDetailPage() {
                 </Card>
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                    <div className="text-2xl md:text-3xl font-bold text-teal-600 mb-2">
                       {property.availableSpace}
                     </div>
                     <div className="text-sm text-gray-600">Available Space (sq ft)</div>
@@ -366,7 +366,7 @@ export function PropertyDetailPage() {
                 </Card>
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                    <div className="text-2xl md:text-3xl font-bold text-teal-600 mb-2">
                       {property.units}
                     </div>
                     <div className="text-sm text-gray-600">Total Units</div>
@@ -374,7 +374,7 @@ export function PropertyDetailPage() {
                 </Card>
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-teal-600 mb-2">
+                    <div className="text-2xl md:text-3xl font-bold text-teal-600 mb-2">
                       {property.occupancyRate}%
                     </div>
                     <div className="text-sm text-gray-600">Occupancy Rate</div>
@@ -385,7 +385,7 @@ export function PropertyDetailPage() {
               <h3 className="text-xl font-bold text-gray-900 mt-12 mb-6 text-center">
                 Trade Area Demographics (10-Minute Drive)
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
                 <Card>
                   <CardContent className="p-6 text-center">
                     <Users className="h-8 w-8 text-blue-900 mx-auto mb-3" />
@@ -423,7 +423,7 @@ export function PropertyDetailPage() {
           <section className="py-12">
             <div className="container mx-auto px-4">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Property Gallery</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
                 {property.gallery.map((image: string, index: number) => (
                   <div key={index} className="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
                     <img
@@ -499,7 +499,7 @@ export function PropertyDetailPage() {
         <section className="py-12">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Current Tenants</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
               {property.tenants.map((tenant: string, index: number) => (
                 <Card key={index}>
                   <CardContent className="p-4 text-center">
@@ -545,7 +545,7 @@ export function PropertyDetailPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Contact Our Leasing Team
           </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             <Card>
               <CardContent className="p-6">
                 <h3 className="font-bold text-lg mb-2">Justin Konforte</h3>

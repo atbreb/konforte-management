@@ -66,7 +66,7 @@ export function AboutPage() {
       <ScrollReveal>
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Built on an Owner's Perspective
@@ -84,7 +84,7 @@ export function AboutPage() {
                 Whether you're a prospective tenant looking for retail space or a property owner considering professional management, you'll benefit from our commitment to excellence, accountability, and long-term value creation.
               </p>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-48 md:h-96 rounded-lg overflow-hidden shadow-xl">
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHRlYW0lMjBvZmZpY2V8ZW58MXx8fHwxNzczNjAwMTYwfDA&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Konforte Management team"
@@ -106,7 +106,7 @@ export function AboutPage() {
               The principles that guide everything we do
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
@@ -137,11 +137,11 @@ export function AboutPage() {
               Experienced professionals dedicated to excellence in property management
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             {team.map((member, index) => (
               <ScrollReveal key={index} delay={index * 0.1}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="grid md:grid-cols-5 gap-0">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
                   <div className="md:col-span-2">
                     <div className="relative h-64 md:h-full">
                       <ImageWithFallback
@@ -171,7 +171,7 @@ export function AboutPage() {
       <section className="py-16 bg-blue-900 text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">By the Numbers</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold mb-2">
                 <AnimatedCounter end={105500} duration={2000} />+
@@ -208,7 +208,7 @@ export function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="bg-teal-50 border-teal-200">
-                <CardContent className="p-8">
+                <CardContent className="p-4 md:p-8">
                   <Target className="h-12 w-12 text-teal-600 mb-4" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                   <p className="text-gray-700">
