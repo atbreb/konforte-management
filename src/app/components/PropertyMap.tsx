@@ -60,7 +60,7 @@ export function PropertyMap({ locations, className, zoom, center }: PropertyMapP
   const defaultZoom = zoom || (locations.length === 1 ? 15 : 11);
 
   return (
-    <div className={className} style={{ minHeight: "300px" }}>
+    <div className={className} style={{ minHeight: "300px", position: "relative", zIndex: 0 }}>
       <MapContainer
         center={[defaultCenter.lat, defaultCenter.lng]}
         zoom={defaultZoom}
