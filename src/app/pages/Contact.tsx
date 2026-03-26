@@ -321,20 +321,20 @@ export function ContactPage() {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Direct Contacts</h2>
-            <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
               <ScrollReveal delay={0}>
                 <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8 text-center">
-                    <div className="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Phone className="h-10 w-10 text-teal-600" />
+                  <CardContent className="p-4 md:p-8 text-center">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Phone className="h-8 w-8 md:h-10 md:w-10 text-teal-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Justin Konforte</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Justin Konforte</h3>
                     <p className="text-gray-600 mb-4">Leasing & General Inquiries</p>
                     <div className="space-y-2">
                       <a href="tel:4074350218" className="block text-blue-900 hover:text-teal-600 transition-colors">
                         (407) 435-0218
                       </a>
-                      <a href="mailto:justin@konfortemanagement.com" className="block text-blue-900 hover:text-teal-600 transition-colors">
+                      <a href="mailto:justin@konfortemanagement.com" className="block text-blue-900 hover:text-teal-600 transition-colors text-sm md:text-base break-all">
                         justin@konfortemanagement.com
                       </a>
                     </div>
@@ -344,17 +344,17 @@ export function ContactPage() {
 
               <ScrollReveal delay={0.1}>
                 <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8 text-center">
-                    <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Phone className="h-10 w-10 text-blue-900" />
+                  <CardContent className="p-4 md:p-8 text-center">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Phone className="h-8 w-8 md:h-10 md:w-10 text-blue-900" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Property Manager</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Property Manager</h3>
                     <p className="text-gray-600 mb-4">Maintenance & Operations</p>
                     <div className="space-y-2">
                       <a href="tel:4074350218" className="block text-blue-900 hover:text-teal-600 transition-colors">
                         (407) 435-0218
                       </a>
-                      <a href="mailto:property@konfortemanagement.com" className="block text-blue-900 hover:text-teal-600 transition-colors">
+                      <a href="mailto:property@konfortemanagement.com" className="block text-blue-900 hover:text-teal-600 transition-colors text-sm md:text-base break-all">
                         property@konfortemanagement.com
                       </a>
                     </div>
