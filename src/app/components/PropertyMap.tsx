@@ -14,9 +14,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-function InvalidateSizeOnVisible() {
+function InvalidateSizeOnVisible({ locations }: { locations: { lat: number; lng: number }[] }) {
   const map = useMap();
   const containerRef = useRef(map.getContainer());
+  const hasFitBounds = useRef(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -25,6 +26,15 @@ function InvalidateSizeOnVisible() {
       ([entry]) => {
         if (entry.isIntersecting) {
           map.invalidateSize();
+
+          // Auto-fit bounds to show all markers when multiple locations
+          if (!hasFitBounds.current && locations.length > 1) {
+            const bounds = L.latLngBounds(
+              locations.map((l) => [l.lat, l.lng] as [number, number])
+            );
+            map.fitBounds(bounds, { padding: [40, 40] });
+            hasFitBounds.current = true;
+          }
         }
       },
       { threshold: 0.1 }
@@ -32,7 +42,7 @@ function InvalidateSizeOnVisible() {
 
     observer.observe(container);
     return () => observer.disconnect();
-  }, [map]);
+  }, [map, locations]);
 
   return null;
 }
@@ -67,7 +77,7 @@ export function PropertyMap({ locations, className, zoom, center }: PropertyMapP
         scrollWheelZoom={false}
         style={{ height: "100%", width: "100%" }}
       >
-        <InvalidateSizeOnVisible />
+        <InvalidateSizeOnVisible locations={locations} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
