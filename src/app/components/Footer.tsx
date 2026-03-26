@@ -44,9 +44,6 @@ export function Footer() {
               <Link to="/faq" className="text-sm hover:text-teal-500 transition-colors">
                 FAQ
               </Link>
-              <Link to="/blog" className="text-sm hover:text-teal-500 transition-colors">
-                Blog
-              </Link>
               <Link to="/contact" className="text-sm hover:text-teal-500 transition-colors">
                 Contact
               </Link>
