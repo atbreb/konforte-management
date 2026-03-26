@@ -10,31 +10,31 @@ export function HomePage() {
       id: "oviedo-park-crossing",
       name: "Oviedo Park Crossing",
       city: "Oviedo, FL",
-      address: "1115 Yellma Place, Oviedo, FL 32765",
-      squareFeet: "186,212",
-      availableSpaces: 0,
+      address: "1115 Vidina Pl, Oviedo, FL 32765",
+      squareFeet: "392,798",
+      availableSpaces: 1,
       units: 13,
-      image: "https://images.unsplash.com/photo-1752386452625-666d457f83d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzaG9wcGluZyUyMGNlbnRlciUyMGV4dGVyaW9yJTIwYWVyaWFsfGVufDF8fHx8MTc3MzY2NjYyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      image: "/properties/oviedo-park-crossing/park-crossing-1.jpg",
     },
     {
       id: "timber-springs",
-      name: "Timber Springs",
+      name: "Town Center at Timber Springs",
       city: "Orlando, FL",
-      address: "425 S. Avalon Park Blvd, Orlando, FL 32828",
-      squareFeet: "34,935",
-      availableSpaces: 0,
+      address: "401-457 S Avalon Park Blvd, Orlando, FL 32828",
+      squareFeet: "85,683",
+      availableSpaces: 2,
       units: 21,
-      image: "https://images.unsplash.com/photo-1760024678775-2410218abad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXRhaWwlMjBwbGF6YSUyMGV4dGVyaW9yJTIwZGF5dGltZXxlbnwxfHx8fDE3NzM2NjY2MjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: "/properties/timber-springs/timber-1.jpg",
     },
     {
       id: "westland-terrace",
-      name: "Westland Terrace",
+      name: "Westland Terrace Plaza",
       city: "Orlando, FL",
-      address: "7649 W Colonial Dr, Orlando, FL 32818",
-      squareFeet: "77,195",
+      address: "7501-7649 W Colonial Dr, Orlando, FL 32818",
+      squareFeet: "302,202",
       availableSpaces: 1,
       units: 16,
-      image: "https://images.unsplash.com/photo-1669003153698-6e087110f06f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaG9wcGluZyUyMHBsYXphJTIwcGFya2luZyUyMGxvdCUyMGFlcmlhbHxlbnwxfHx8fDE3NzQwMzE0NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: "/properties/westland-terrace/westland-1.jpg",
     },
   ];
 
@@ -67,7 +67,7 @@ export function HomePage() {
       <section className="relative h-[600px] flex items-center justify-center text-white">
         <div className="absolute inset-0 bg-gray-900">
           <img
-            src="https://images.unsplash.com/photo-1752386452625-666d457f83d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzaG9wcGluZyUyMGNlbnRlciUyMGV4dGVyaW9yJTIwYWVyaWFsfGVufDF8fHx8MTc3MzY2NjYyNHww&ixlib=rb-4.1.0&q=80&w=1080"
+            src="/properties/westland-terrace/westland-3.jpg"
             alt="Shopping center aerial view"
             className="w-full h-full object-cover opacity-40"
           />
@@ -96,7 +96,7 @@ export function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold mb-2">
-                <AnimatedCounter end={298342} duration={2000} />+
+                <AnimatedCounter end={780683} duration={2000} />+
               </div>
               <div className="text-sm uppercase tracking-wide text-gray-300">Total Square Feet Managed</div>
             </div>
@@ -185,7 +185,7 @@ export function HomePage() {
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1764690690771-b4522d66b433?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tZXJjaWFsJTIwcHJvcGVydHklMjB0ZWFtJTIwbWVldGluZ3xlbnwxfHx8fDE3NzM2NjY2MjR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/properties/oviedo-park-crossing/park-crossing-2.jpg"
                 alt="Property management team"
                 className="w-full h-full object-cover"
               />

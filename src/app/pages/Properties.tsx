@@ -10,37 +10,37 @@ export function PropertiesPage() {
       id: "oviedo-park-crossing",
       name: "Oviedo Park Crossing",
       city: "Oviedo",
-      address: "1115 Yellma Place, Oviedo, FL 32765",
-      squareFeet: "186,212",
-      availableSpaces: 0,
+      address: "1115 Vidina Pl, Oviedo, FL 32765",
+      squareFeet: "392,798",
+      availableSpaces: 1,
       units: 13,
-      occupancyRate: 100,
-      image: "https://images.unsplash.com/photo-1752386452625-666d457f83d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzaG9wcGluZyUyMGNlbnRlciUyMGV4dGVyaW9yJTIwYWVyaWFsfGVufDF8fHx8MTc3MzY2NjYyNHww&ixlib=rb-4.1.0&q=80&w=1080",
-      description: "Premier shopping center in Oviedo with national tenants including Ross, TJ Maxx, PetSmart, and Michaels. Fully leased with strong demographics.",
+      occupancyRate: 98,
+      image: "/properties/oviedo-park-crossing/park-crossing-1.jpg",
+      description: "Premier power center in Oviedo with national tenants including Ross, TJ Maxx, PetSmart, and Michaels. Pre-leasing 2,500–10,000 SF with build-to-suit available. Minutes from the Oviedo Mall Redevelopment.",
     },
     {
       id: "timber-springs",
-      name: "Timber Springs",
+      name: "Town Center at Timber Springs",
       city: "Orlando",
-      address: "425 S. Avalon Park Blvd, Orlando, FL 32828",
-      squareFeet: "34,935",
-      availableSpaces: 0,
+      address: "401-457 S Avalon Park Blvd, Orlando, FL 32828",
+      squareFeet: "85,683",
+      availableSpaces: 2,
       units: 21,
-      occupancyRate: 100,
-      image: "https://images.unsplash.com/photo-1760024678775-2410218abad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXRhaWwlMjBwbGF6YSUyMGV4dGVyaW9yJTIwZGF5dGltZXxlbnwxfHx8fDE3NzM2NjY2MjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      description: "Neighborhood retail center serving the Avalon Park community with diverse tenant mix from dining to services.",
+      occupancyRate: 97,
+      image: "/properties/timber-springs/timber-1.jpg",
+      description: "Neighborhood center serving the Avalon Park community with 26,000+ cars per day. Shadow anchored by Walmart Neighborhood Market with average household income over $100,000.",
     },
     {
       id: "westland-terrace",
-      name: "Westland Terrace",
+      name: "Westland Terrace Plaza",
       city: "Orlando",
-      address: "7649 W Colonial Dr, Orlando, FL 32818",
-      squareFeet: "77,195",
+      address: "7501-7649 W Colonial Dr, Orlando, FL 32818",
+      squareFeet: "302,202",
       availableSpaces: 1,
       units: 16,
       occupancyRate: 98,
-      image: "https://images.unsplash.com/photo-1669003153698-6e087110f06f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaG9wcGluZyUyMHBsYXphJTIwcGFya2luZyUyMGxvdCUyMGFlcmlhbHxlbnwxfHx8fDE3NzQwMzE0NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      description: "Established retail center on West Colonial Drive with 31,500+ daily traffic, recently repainted exterior, and H Mart now open.",
+      image: "/properties/westland-terrace/westland-1.jpg",
+      description: "252,883 SF community shopping center at the signalized corner of W Colonial Drive and Apopka Vineland Road with 31,500+ cars per day. Recently repainted exterior. HMART now open.",
     },
   ];
 
@@ -159,7 +159,7 @@ export function PropertiesPage() {
               <Link to="/contact">Contact Leasing Team</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-teal-600">
-              <a href="tel:4075551234">(407) 555-1234</a>
+              <a href="tel:4074350218">(407) 435-0218</a>
             </Button>
           </div>
         </div>
